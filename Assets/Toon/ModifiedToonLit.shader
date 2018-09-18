@@ -1,7 +1,11 @@
-Shader "Custom/ToonLit" {
+Shader "Modified/ToonLit" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
+		_Color2 ("Noise Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_NoiseTex ("Noise Texture", 2D) = "white" {}
+		_NoiseStrength ("Noise Strength", Range(0, 1)) = 0.5
+		_ModTex ("Modifier Texture", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 	}
 
@@ -34,15 +38,25 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 
 
 sampler2D _MainTex;
+sampler2D _NoiseTex;
+sampler2D _ModTex;
 float4 _Color;
+float4 _Color2;
+float _NoiseStrength;
 
 struct Input {
 	float2 uv_MainTex : TEXCOORD0;
+	float2 uv_ModTex : TEXCOORD1;
+	float3 worldPos;
 };
 
 void surf (Input IN, inout SurfaceOutput o) {
 	half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-	o.Albedo = c.rgb;
+	//half4 n = tex2D(_NoiseTex, IN.uv_MainTex) * _Color; // project noise onto model
+	half4 n = tex2D(_NoiseTex, IN.worldPos) * _Color; // stick noise onto the model's side
+	o.Albedo = (n.r < _NoiseStrength) ? _Color2 : c.rgb * n.rgb; // use noise texture
+	//half4 m = tex2D(_ModTex, IN.uv_ModTex) * _Color;
+	//o.Albedo = (n.rgb > m.rgb) ? m.rgb : c.rgb * n.rgb;
 	o.Alpha = c.a;
 }
 ENDCG
