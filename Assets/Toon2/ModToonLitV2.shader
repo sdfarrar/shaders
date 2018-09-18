@@ -48,7 +48,7 @@
 
 		void vert(inout appdata_full v, out Input o){
 			float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-			half4 d = tex2Dlod(_DispTex, float4(worldPos.x, worldPos.y + Time.y, 0, 0));
+			half4 d = tex2Dlod(_DispTex, float4(worldPos.x, worldPos.y + _Time.y, 0, 0));
 			//half4 d = tex2Dlod(_DispTex, v.texcoord);
 			UNITY_INITIALIZE_OUTPUT(Input, o);
 			v.vertex.xyz += _Displacement * d * v.normal;
