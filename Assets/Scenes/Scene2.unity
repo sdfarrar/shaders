@@ -501,6 +501,7 @@ MonoBehaviour:
   Color: {r: 0.07863118, g: 0.5377358, b: 0.47420973, a: 0}
   Width: 512
   Height: 512
+  Seed: {fileID: 0}
   buf1: {fileID: 0}
   buf2: {fileID: 0}
   Material: {fileID: 2100000, guid: 7bb32d3f19765124eba47e57bbdfbccf, type: 2}
@@ -918,8 +919,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2140727571}
-  m_LocalRotation: {x: 0.026765663, y: 0.9706438, z: -0.12918188, w: 0.2011128}
-  m_LocalPosition: {x: -1.2470697, y: 1.583507, z: 2.019517}
+  m_LocalRotation: {x: -4.656613e-10, y: 1, z: 0.000000007450581, w: -0.0000000037252903}
+  m_LocalPosition: {x: -0.75705075, y: 0.42326915, z: 0.52177453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
