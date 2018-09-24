@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApplyShader : MonoBehaviour {
 
-	public RenderTexture InitialTexture;
+	public Texture InitialTexture;
 
 
 	public RenderTexture Texture;
