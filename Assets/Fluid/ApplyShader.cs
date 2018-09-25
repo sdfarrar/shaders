@@ -15,13 +15,14 @@ public class ApplyShader : MonoBehaviour {
 
 	void Start() {
 		Graphics.Blit(InitialTexture, Texture);
-		buffer = new RenderTexture(Texture.width, Texture.height, Texture.depth, Texture.format);
+		//buffer = new RenderTexture(Texture.width, Texture.height, Texture.depth, Texture.format);
 		buffer = new RenderTexture(Texture);
 
 		handle = StartCoroutine(UpdateTexture());
 	}
 	
 	private IEnumerator UpdateTexture() {
+        yield return new WaitForSeconds(Interval);
 		while(true){
 			Graphics.Blit(Texture, buffer, Material);
 			Graphics.Blit(buffer, Texture);
