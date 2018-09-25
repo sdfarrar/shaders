@@ -5,12 +5,10 @@ using UnityEngine;
 public class ApplyShader : MonoBehaviour {
 
 	public Texture InitialTexture;
-
-
 	public RenderTexture Texture;
 
 	public Material Material;
-	public int Interval = 1;
+	public float Interval = 1;
 
 	private RenderTexture buffer;
 	private Coroutine handle;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44968712, g: 0.49683642, b: 0.5599518, a: 1}
+  m_IndirectSpecularColor: {r: 0.4496873, g: 0.49683672, b: 0.5599524, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &87692629
 Transform:
   m_ObjectHideFlags: 0
@@ -633,13 +633,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 903330386}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 1.148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1116982306}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &903330388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,10 +651,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cb876f9a968994b884dbefe03fc79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialTexture: {fileID: 2800000, guid: 8cffa2f62bcb4a847a6222bc62bfeca5, type: 3}
-  Texture: {fileID: 8400000, guid: 71b976c8917faf34ca72a00f519ace99, type: 2}
+  InitialTexture: {fileID: 8400000, guid: f417b76086a86584b8a22f8dc6b08b0d, type: 2}
+  Texture: {fileID: 8400000, guid: bcf06485edf019c4dad030bf9236aecc, type: 2}
   Material: {fileID: 2100000, guid: 3428150b9c65cc74ebc603c830553091, type: 2}
-  Interval: 1
+  Interval: 0.05
 --- !u!64 &903330389
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3428150b9c65cc74ebc603c830553091, type: 2}
+  - {fileID: 2100000, guid: 887e344683a91a4479c24bbc87bcc04f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -733,7 +733,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1116982305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75542635, y: 0.42345458, z: -1.9380336}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 586136096}
@@ -1095,6 +1095,7 @@ GameObject:
   - component: {fileID: 2140727574}
   - component: {fileID: 2140727573}
   - component: {fileID: 2140727572}
+  - component: {fileID: 2140727575}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1118,7 +1119,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.12090601, g: 0.12105176, b: 0.122641504, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1155,10 +1156,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2140727571}
-  m_LocalRotation: {x: -4.656613e-10, y: 1, z: 0.000000007450581, w: -0.0000000037252903}
-  m_LocalPosition: {x: -0.75705075, y: 0.42326915, z: 0.52177453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2140727575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2140727571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a110bbfd29629468159bd98deb970a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderTexture: {fileID: 8400000, guid: bcf06485edf019c4dad030bf9236aecc, type: 2}
+  brush0: {fileID: 2800000, guid: 449214dbdfb68744f84d896e05a61a90, type: 3}
+  brush1: {fileID: 2800000, guid: bd01003632312b241bfaf80777904812, type: 3}
+  size: 16

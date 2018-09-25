@@ -19,11 +19,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8cffa2f62bcb4a847a6222bc62bfeca5, type: 3}
+        m_Texture: {fileID: 8400000, guid: bcf06485edf019c4dad030bf9236aecc, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Dissipation: 0.124
-    - _Minimum: 0.326
-    - _Pixels: 256
-    m_Colors: []
+    - _Dissipation: 8
+    - _Minimum: 0.0398
+    - _Pixels: 255
+    m_Colors:
+    - _MousePosition: {r: 0, g: 0, b: 0, a: 0}
