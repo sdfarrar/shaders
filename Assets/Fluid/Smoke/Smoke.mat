@@ -25,6 +25,6 @@ Material:
     m_Floats:
     - _Dissipation: 8
     - _Minimum: 0.0398
-    - _Pixels: 255
+    - _Pixels: 256
     m_Colors:
     - _MousePosition: {r: 0, g: 0, b: 0, a: 0}

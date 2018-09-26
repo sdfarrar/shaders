@@ -18,11 +18,11 @@ public class ApplyShader : MonoBehaviour {
 		//buffer = new RenderTexture(Texture.width, Texture.height, Texture.depth, Texture.format);
 		buffer = new RenderTexture(Texture);
 
+        Material.SetFloat("_Pixels", InitialTexture.width); // assuming square texture
 		handle = StartCoroutine(UpdateTexture());
 	}
 	
 	private IEnumerator UpdateTexture() {
-        yield return new WaitForSeconds(Interval);
 		while(true){
 			Graphics.Blit(Texture, buffer, Material);
 			Graphics.Blit(buffer, Texture);

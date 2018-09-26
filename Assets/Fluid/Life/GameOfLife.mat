@@ -25,5 +25,5 @@ Material:
     m_Floats:
     - _Dissipation: 0.5
     - _Minimum: 0.003
-    - _Pixels: 32
+    - _Pixels: 256
     m_Colors: []
