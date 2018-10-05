@@ -9,12 +9,18 @@ public class DrawMouse : MonoBehaviour {
     public Texture brush1;
     public int size = 50;
 
+    private Material _addBrushMaterial;
+
+    void Start() {
+        _addBrushMaterial = new Material(Shader.Find("Hidden/AddBrushShader"));
+    }
+
 	// Update is called once per frame
 	void Update () {
 
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
-            Texture texture = Input.GetMouseButton(0) ? brush0 : brush1;
+            Texture brush = Input.GetMouseButton(0) ? brush0 : brush1;
 
             Vector3 mouse = Input.mousePosition;
             mouse.z = transform.position.z;
@@ -22,16 +28,20 @@ public class DrawMouse : MonoBehaviour {
 
             Debug.DrawLine(Vector3.zero, screen);
 
-            // [-0.5,+0.5] to [0, 255]
-            Vector2 pixels = new Vector2
-            (   (screen.x + 0.5f) * renderTexture.width,
-                renderTexture.height - (screen.y + 0.5f) * renderTexture.height
-            );
+            Camera cam = Camera.main;
+            RaycastHit hit;
+            if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit)) return;
 
-            RenderTexture.active = renderTexture;
+            Renderer rend = hit.transform.GetComponent<Renderer>();
+            MeshCollider meshCollider = hit.collider as MeshCollider;
+
+            float x = hit.textureCoord.x * renderTexture.width - size*0.5f;
+            float y = (1-hit.textureCoord.y) * renderTexture.height - size*0.5f;
+
+            RenderTexture.active = renderTexture; //the render texture to be drawn to
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, renderTexture.width, renderTexture.height, 0);
-            Graphics.DrawTexture(new Rect(pixels.x-size/2, pixels.y-size/2, size, size), texture);
+            Graphics.DrawTexture(new Rect(x, y, size, size), brush);
             GL.PopMatrix();
             RenderTexture.active = null;
         }
