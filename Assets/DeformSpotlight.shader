@@ -1,6 +1,6 @@
 ﻿// Creates a spotlight on _MainTex based off the _CharacterPosition
 
-Shader "Custom/Spotlight"
+Shader "Custom/DeformSpotlight"
 {
 	Properties
 	{

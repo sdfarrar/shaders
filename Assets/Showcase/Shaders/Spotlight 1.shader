@@ -52,7 +52,7 @@ Shader "Custom/Spotlight"
                 float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
                 o.dist = distance(worldPos, _CharacterPosition.xyz);
 
-				o.vertex.y += step(5, o.dist) * (o.dist - 5) * 1.15;
+				//o.vertex.y += step(5, o.dist) * (o.dist - 5) * 1.05;
 				return o;
 			}
 			

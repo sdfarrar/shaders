@@ -14,6 +14,7 @@ public class DrawMouse : MonoBehaviour {
 
     void Awake() { 
         SetTextureRegion.OnRegionEntered += SetRenderTexture;
+        SetTextureRegion.OnRegionExited += ResetRenderTexture;
     }
 
     void Start() {
@@ -23,7 +24,7 @@ public class DrawMouse : MonoBehaviour {
 
 	void Update() {
         if(!Input.GetMouseButton(0) && !Input.GetMouseButton(1)){ return; }
-        if(RenderTexture==null || brush0==null || brush1==null){ Debug.LogWarning("Null values present!"); return; }
+        if(RenderTexture==null || brush0==null || brush1==null){ return; }
         DrawToTexture();
     }
 
@@ -56,6 +57,10 @@ public class DrawMouse : MonoBehaviour {
 
     private void SetRenderTexture(SetTextureRegion region) {
         RenderTexture = region.TargetTexture;
+    }
+
+    private void ResetRenderTexture(SetTextureRegion region) {
+        RenderTexture = initialTexture;
     }
 
 }

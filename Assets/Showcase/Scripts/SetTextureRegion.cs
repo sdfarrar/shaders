@@ -7,6 +7,7 @@ using UnityEngine;
 public class SetTextureRegion : MonoBehaviour {
 
 	public static event Action<SetTextureRegion> OnRegionEntered = delegate { };
+	public static event Action<SetTextureRegion> OnRegionExited = delegate { };
 
 	public RenderTexture TargetTexture;
 
@@ -19,9 +20,12 @@ public class SetTextureRegion : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		if(!other.gameObject.CompareTag("Player")){ return ; }
-
 		OnRegionEntered(this);
-		
+	}
+
+	void OnTriggerExit(Collider other) {
+		if(!other.gameObject.CompareTag("Player")){ return ; }
+		OnRegionExited(this);
 	}
 
 }
