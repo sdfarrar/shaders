@@ -6,8 +6,8 @@ Shader "Custom/Spotlight"
 	{
 		_MainTex ("Texture", 2D) = "white" {}
         _CharacterPosition ("Character Position", Vector) = (0,0,0,0)
-        _CircleRadius ("Spotlight Size", Range(0, 20)) = 3
-        _RingSize ("Ring Size", Range(0, 5)) = 1
+        _CircleRadius ("Spotlight Size", Range(0, 10)) = 3
+        _RingSize ("Ring Size", Range(0, 10)) = 1
         _ColorTint("Outside Tint", Color) = (0,0,0,0) // Color outside the spotlight
 	}
 	SubShader
@@ -52,7 +52,6 @@ Shader "Custom/Spotlight"
                 float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
                 o.dist = distance(worldPos, _CharacterPosition.xyz);
 
-				o.vertex.y += step(5, o.dist) * (o.dist - 5) * 1.15;
 				return o;
 			}
 			
