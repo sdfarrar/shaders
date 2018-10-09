@@ -10,7 +10,7 @@ public class SetShaderProperty : MonoBehaviour {
     public Transform Player;
 
 	void Update() {
-        if(Player==null || Material==null){ return; }
-        Material.SetVector(PropertyName, Player.position);
+		if(Player==null || Material==null){ return; }
+		Material.SetVector(PropertyName, Player.position);
 	}
 }

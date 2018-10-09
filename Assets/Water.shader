@@ -46,7 +46,14 @@
                
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
-                o.vertex.y += sin(worldPos.z + _Time.w) * sin(o.uv + _Time.y) * _Amplitude;
+                float displacement = (
+                      sin(worldPos.z + _Time.w)
+                    + sin(o.uv + _Time.y)
+                    + sin(o.uv + _Time.w + .5)
+                    + sin(worldPos.x + _Time.x - .128)
+                    ) * _Amplitude;
+                
+                o.vertex.y += clamp(displacement*.3, -1, 0);
 
 				return o;
 			}

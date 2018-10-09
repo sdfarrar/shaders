@@ -8,7 +8,7 @@ Shader "Custom/Snow Shader" {
     	_Snow ("Level of snow", Range(1, -1)) = 1
     	_SnowColor ("Color of snow", Color) = (1.0,1.0,1.0,1.0)
     	_SnowDirection ("Direction of snow", Vector) = (0,1,0)
-    	_SnowDepth ("Depth of snow", Range(0,0.0001)) = 0
+    	_SnowDepth ("Depth of snow", Range(0,0.001)) = 0
  }
  SubShader {
     	Tags { "RenderType"="Opaque" }
