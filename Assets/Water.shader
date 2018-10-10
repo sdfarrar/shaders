@@ -3,7 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		//_SecondaryTex ("Texture", 2D) = "white" {}
+		_Noise ("Noise", 2D) = "white" {}
 		//_Blend ("Blend Amount", Range(0,1)) = 0
         _Amplitude("Amplitude", Range(0, 5)) = 1
 	}
@@ -34,7 +34,7 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-			//sampler2D _SecondaryTex;
+			sampler2D _Noise;
             float _Amplitude;
 			
 			v2f vert (appdata v)
@@ -46,14 +46,14 @@
                
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
-                float displacement = (
-                      sin(worldPos.z + _Time.w)
-                    + sin(o.uv + _Time.y)
-                    + sin(o.uv + _Time.w + .5)
-                    + sin(worldPos.x + _Time.x - .128)
-                    ) * _Amplitude;
+                float val = tex2Dlod(_Noise, float4(o.uv, 1, 1)).r * _Amplitude;
+                float displacement = 1 - abs(
+                    sin(worldPos.xz + _Time.y)
+                    + sin(worldPos.xz + _Time.y)
+                    + sin(worldPos.x + _Time.x)
+                    + sin(worldPos.z + _Time.x));
                 
-                o.vertex.y += clamp(displacement*.3, -1, 0);
+                o.vertex.y += displacement * (1-cos(val));
 
 				return o;
 			}
