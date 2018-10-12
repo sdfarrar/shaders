@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: XRayVision
+  m_Name: XRayVisionPlayer
   m_Shader: {fileID: 4800000, guid: f6f28a2de0aa4dc45b7fab2a35066381, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -23,5 +23,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _EdgeFactor: 1.44
-    m_Colors: []
+    - _EdgeFactor: 0.67
+    m_Colors:
+    - _EdgeColor: {r: 0, g: 0.6366434, b: 1, a: 1}

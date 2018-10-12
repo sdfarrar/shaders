@@ -4,6 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_EdgeFactor ("Edge Factor", Float) = 1
+        _EdgeColor ("XRay Edge Color", Color) = (1,1,1,1)
 	}
 	SubShader
 	{
@@ -14,6 +15,12 @@
 
 		Pass
 		{
+            Stencil {
+                Ref 0
+                Comp NotEqual
+                Pass keep
+            }
+
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -36,6 +43,7 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			float _EdgeFactor;
+            half4 _EdgeColor;
 			
 			v2f vert (appdata v)
 			{
@@ -52,7 +60,7 @@
 				//return float4(ndotl, ndotl, ndotl, 0);
 
 				float ndotv = (1 - dot(i.normal, i.viewDir)) * _EdgeFactor;
-				return float4(ndotv, ndotv, ndotv, 0);
+				return float4(ndotv, ndotv, ndotv, 0) * _EdgeColor;
 			}
 			ENDCG
 		}
